@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>EPI</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="js/jquery-ui.min.css" />
+    <script src="js/external/jquery/funcaomaterial.js"></script>
+    <style>
+        span {
+            color: red;
+            font-weight: 600;
+        }
+        
+        #container {
+            width: 600px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+        
+        .item {
+            background-color: #ccc;
+            border: 1px solid #222;
+            padding: 4%;
+            width: 40%;
+            margin: 5px;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+    <p id="demo"></p>
+
+<script>
+    var s= new Date=(86400000);
+document.getElementById("demo").innerHTML = s;
+
+</script>
+    <script>
+ 
+
+
+        
+        
+        function WriteDate() {
+            
+
+            document.write("<tt>" + NomeDia[dias] + ", " + dia + " de " + NomeMes[mes] + " de " + ano + "</tt>")
+            
+           
+           
+        }
+
+
+        WriteDate()
+        
+             $(function () {
+            $("#cadastrar").click(function () {
+                var qtde, r;
+                if (validaCampos() == true) {
+                    gravarDados();
+                    $("#exibir").dialog("open");
+                    $("#exibir").html("Profissional Cadastrados");
+                }
+            })
+        });
+
+        $(function () {
+            $("#busc").click(function () {
+                var c = $("#matricula").val();
+                buscar(c);
+
+            });
+            $("#apaga").click(function () {
+                var c = $("#matricula").val();
+                excluir(c);
+                $("#msg").dialog("open");
+                $("#msg").html("Cadastro Deletado");
+            });
+
+            $("#exibir").dialog({
+                autoOpen: false,
+                width: 300,
+                buttons: {
+                    "Fechar": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+    </script>
+ 
+</head>
+
+<body>
+      
+<?php
+
+echo "Hello world.";
+?>
+    <section id="container">
+        <div class="item">
+            <form method="post" name="validaCampo">
+
+                <br> Matricula:
+                <br>
+                <input type="text" id="matricula">
+                <br>
+                <br> Nome Do Profissional:
+                <br>
+                <input type="text" id="profissional">
+                <br>
+                <br> Empresa:
+                <br>
+                <input type="text" id="empresa">
+                <br>
+                <br> Função:
+                <br>
+                <input type="text" id="funcao">
+                <br>
+                <br>
+                <legend> <strong>Material EPI</strong></legend>
+                <br>
+                <select id="epi" name="epi">
+                    <option value=""></option>
+                    <option value="bota"> Bota </option>
+                    <option value="luva">Luva </option>
+                    <option value="oculos"> Óculos </option>
+                    <option value="mascara"> Máscara </option>
+                    <option value="capaChuva"> Capa De Chuva </option>
+                    <option value="galaoCreme"> Galão de Creme Protetor (Setor) </option>
+                    <option value="cremeProtetor"> Creme Protetor </option>
+
+                </select>
+                <br>
+                <br> C.A (codigo de aprovação):
+                <br>
+                <input type="text" id="ca">
+                <br>
+                <br> Validade Do Material:
+                <br>
+                <input type="date" id="validadeMaterial">
+                <br>
+                <br> Data De Entrega:
+                <br>
+                <input type="date" id="dataEntrega">
+                <br>
+                <br> Data Da Próxima Troca:
+                <br>
+                <input type="date" id="dataTroca">
+                <br>
+                <br>
+                <br>
+                <p id="resp"></p>
+                <br>
+                <button type="button" value="enviar" id="cadastrar" class="button at">Cadastrar</button>
+                <button type="button" value="enviar" id="busc" class="button at">Pesquisar</button>
+                <button type="button" value="enviar" id="apaga" class="button at">Apagar</button>
+
+
+                <div id="exibir" title="Dados"></div>
+            </form>
+            <article id="dados"></article>
+        </div>
+    </section>
+</body>
+
+</html>
